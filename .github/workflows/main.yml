@@ -2,9 +2,8 @@ name: Run Python Script and Commit Changes
 
 on:
   schedule:
-    #- cron: '0 */5 * * *'  # Runs every 5 hours
-    - cron: '*/2 * * * *'  # Runs every 5 hours
-
+    - cron: '*/2 * * * *'  # Runs every 2 minutes
+  workflow_dispatch:  # Allows you to trigger the workflow manually
 
 jobs:
   run-python-script:
@@ -30,14 +29,14 @@ jobs:
       - name: Check for changes and commit
         run: |
           # Check if there are any changes in the repository
-          git diff --exit-code || echo "Changes detected"
-
-          # If there are changes, commit them
           if [ -n "$(git status --porcelain)" ]; then
+            # Set up Git configuration for the commit
             git config --global user.name "Vishva Luke"
             git config --global user.email "vishvaluke@gmail.com"
-            git add your_file.txt
-            git commit -m "Update your_file.txt with latest details"
+            
+            # Add the file and commit changes
+            git add last_posting_id.txt
+            git commit -m "Update last_posting_id.txt with latest details"
             git push
           else
             echo "No changes to commit."
