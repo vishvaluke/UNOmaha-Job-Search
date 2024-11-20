@@ -2,8 +2,8 @@ name: Run Python Script and Commit Changes
 
 on:
   schedule:
-    - cron: '0 */6 * * *'  # Runs every 2 minutes
-  workflow_dispatch:  # Allows you to trigger the workflow manually
+    - cron: '0 */6 * * *'
+  workflow_dispatch:  
 
 jobs:
   run-python-script:
