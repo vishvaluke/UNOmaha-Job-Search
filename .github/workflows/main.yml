@@ -27,12 +27,20 @@ jobs:
       - name: Run the Python script
         run: python jobsearch.py
 
-      - name: Commit and push changes
+      - name: Check for changes and commit
         run: |
-          git config --global user.name "Your GitHub Username"
-          git config --global user.email "your-email@example.com"
-          git add your_file.txt
-          git commit -m "Update your_file.txt with latest details"
-          git push
+          # Check if there are any changes in the repository
+          git diff --exit-code || echo "Changes detected"
+
+          # If there are changes, commit them
+          if [ -n "$(git status --porcelain)" ]; then
+            git config --global user.name "Vishva Luke"
+            git config --global user.email "vishvaluke@gmail.com"
+            git add your_file.txt
+            git commit -m "Update your_file.txt with latest details"
+            git push
+          else
+            echo "No changes to commit."
+          fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
