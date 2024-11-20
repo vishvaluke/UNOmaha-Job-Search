@@ -39,5 +39,5 @@ This project is a Python-based automation tool that monitors job postings on the
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/yourusername/job-posting-notifier.git
-   cd job-posting-notifier
+   git clone https://github.com/yourusername/job-posting-notifier.git](https://github.com/vishvaluke/unojobsearch.git
+   cd unojobsearch
