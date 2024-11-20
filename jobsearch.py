@@ -1,8 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
-import re
-import time
-import os,math
+import re,os
 from twilio.rest import Client
 
 URL = "https://unomaha.peopleadmin.com/postings/search?sort=225+desc"
@@ -37,13 +35,21 @@ def get_posting_ids():
     return sorted(posting_ids, reverse=True)
 
 def read_last_posting_id():
-    if os.path.exists('last_posting_id.txt'):
-        with open('last_posting_id.txt', 'r') as file:
+    current_directory = os.getcwd()
+    
+    file_path = os.path.join(current_directory, 'last_posting_id.txt')
+    
+    if os.path.exists(file_path):
+        with open(file_path, 'r') as file:
             return int(file.read().strip())
     return 0
 
 def save_latest_posting_id(posting_id):
-    with open('last_posting_id.txt', 'w') as file:
+    current_directory = os.getcwd()
+    
+    file_path = os.path.join(current_directory, 'last_posting_id.txt')
+    
+    with open(file_path, 'w') as file:
         file.write(str(posting_id))
 
 def send_whatsapp_message(messages):
@@ -133,5 +139,5 @@ def monitor_site():
         save_latest_posting_id(current_posting_ids[0])
     else:
         print("No new postings.")
-while True:
-    monitor_site()
+
+monitor_site()
