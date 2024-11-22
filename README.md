@@ -1,4 +1,4 @@
-# Job Posting Notifier 🚀
+# Job Posting Notifier 🚀 [![Run Python Script and Commit Changes](https://github.com/vishvaluke/UNOmaha-Job-Search/actions/workflows/main.yml/badge.svg)](https://github.com/vishvaluke/UNOmaha-Job-Search/actions/workflows/main.yml)
 
 This project is a Python-based automation tool that monitors job postings on the [UNOmaha Job Portal](https://unomaha.peopleadmin.com/postings/search?sort=225+desc), extracts new postings, and sends notifications via WhatsApp using Twilio.
 
